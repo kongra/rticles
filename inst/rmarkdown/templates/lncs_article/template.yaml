@@ -1,0 +1,5 @@
+name: Lecture Notes in Computer Science
+description: >
+ Template for creating an article for submission to LNCS
+create_dir: true
+

@@ -1,0 +1,44 @@
+---
+author:
+  - name: FirstName1 LastName1
+    affiliation: University1/Company1
+    address: >
+      First line1
+      Second line1
+    email: name1@company.com
+    url: http://name1.com
+  - name: Second Author
+    affiliation: Affiliation
+title:
+  formatted: "A Capitalized Title: Something about a Package \\pkg{foo}"
+  running:   "\\pkg{foo}: A Capitalized Title"
+abstract: >
+  The abstract of the article.
+keywords:
+  # at least one keyword must be supplied
+  formatted: [keywords, not capitalized, "\\proglang{Java}"]
+preamble: >
+  \usepackage{amsmath}
+output: rticles::lncs_article
+---
+
+# Introduction
+
+This template demonstrates some of the basic latex you'll need to know to create a LNCS article.
+
+## Code formatting
+
+Don't use markdown, instead use the more precise latex commands:
+
+* \proglang{Java}
+* \pkg{plyr}
+* \code{print("abc")}
+
+# R code
+
+Can be inserted in regular R markdown blocks.
+
+```{r}
+x <- 1:10
+x
+```
