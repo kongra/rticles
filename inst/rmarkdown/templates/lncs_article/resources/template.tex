@@ -1,6 +1,7 @@
 \documentclass[runningheads,a4paper]{llncs}
 
 \usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
@@ -10,12 +11,10 @@
 \title{$title.formatted$}
 \titlerunning{$title.running$}
 
-\author{Konrad Grzanek} \authorrunning{K. Grzanek}
+\author{$author.formatted$}
+\authorrunning{$author.running$}
 
-\institute{IT Institute\\
-  University of Social Science (SAN)\\
-  Sienkiewicza 9, 90-113 Lodz\\
-  \url{kgrzanek@spoleczna.pl} }
+\institute{$affiliations$}
 
 \toctitle{Lecture Notes in Computer Science}
 \maketitle
@@ -23,8 +22,7 @@
 \begin{abstract}
   $abstract$
 
-  \keywords{Production Systems, Forward Chaining, Rete, Functional
-    Programming, State Monad, Lenses}
+  \keywords{$keywords$}
 
 \end{abstract}
 

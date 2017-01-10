@@ -1,24 +1,22 @@
 ---
-author:
-  - name: FirstName1 LastName1
-    affiliation: University1/Company1
-    address: >
-      First line1
-      Second line1
-    email: name1@company.com
-    url: http://name1.com
-  - name: Second Author
-    affiliation: Affiliation
+author: 
+  formatted: John Smith, Jan Kowalski
+  running: Smith J., Kowalski J. 
 title:
-  formatted: "A Capitalized Title: Something about a Package \\pkg{foo}"
-  running:   "\\pkg{foo}: A Capitalized Title"
+  formatted: "A Capitalized Title of My Paper in LNCS"
+  running:   "A Capitalized Title"
 abstract: >
-  The abstract of the article.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
+  maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
+  sagittis posuere in a lacus. Sed quis enim eget justo gravida sollicitudin quis
+  eget diam. Quisque id tellus eu orci mollis sagittis aliquam ut dolor. Nam nec
+  ex ut orci eleifend malesuada in lobortis eros. Nulla non magna ante. Phasellus
+  congue viverra fringilla.
 keywords:
   # at least one keyword must be supplied
-  formatted: [keywords, not capitalized, "\\proglang{Java}"]
+  formatted: [keywords, not capitalized, "and so on"]
 preamble: >
-  \usepackage{amsmath}
+  \usepackage{amsmath, amssymb, amsfont}
 output: rticles::lncs_article
 ---
 
@@ -26,19 +24,42 @@ output: rticles::lncs_article
 
 This template demonstrates some of the basic latex you'll need to know to create a LNCS article.
 
-## Code formatting
+# Solution
 
-Don't use markdown, instead use the more precise latex commands:
+Suspendisse quam nisl, laoreet ut vehicula a, eleifend vel massa. Morbi faucibus
+sem varius placerat lacinia. Donec nulla augue, tempor in rutrum sed, bibendum
+sit amet velit. Quisque hendrerit erat sit amet nisi vestibulum euismod. Morbi
+iaculis tempor sapien ut aliquet. Nunc tempus neque nisi, ut fermentum turpis
+auctor sed. Praesent tincidunt, velit non vulputate posuere, neque orci sagittis
+velit, in eleifend lorem nunc ac mi. Phasellus maximus bibendum mi, sit amet
+rutrum nibh commodo vitae.
 
-* \proglang{Java}
-* \pkg{plyr}
-* \code{print("abc")}
+# Implementation
+
+Aliquam varius condimentum volutpat. Maecenas viverra a tellus eget
+placerat. Phasellus imperdiet mauris nec metus faucibus, eget suscipit erat
+elementum. Nunc commodo viverra lectus. Proin a augue et risus convallis mattis
+ut nec justo. Phasellus aliquet, magna in sodales molestie, erat elit varius
+erat, et condimentum ipsum lorem ut ligula. Pellentesque habitant morbi
+tristique senectus et netus et malesuada fames ac turpis egestas. Fusce quis
+maximus mauris, ac rutrum eros. Mauris massa arcu, feugiat eu aliquam a,
+scelerisque ut tellus.
+
+# Summary
+
+Aliquam varius condimentum volutpat. Maecenas viverra a tellus eget
+placerat. Phasellus imperdiet mauris nec metus faucibus, eget suscipit erat
+elementum. Nunc commodo viverra lectus. Proin a augue et risus convallis mattis
+ut nec justo. Phasellus aliquet, magna in sodales molestie, erat elit varius
+erat, et condimentum ipsum lorem ut ligula. Pellentesque habitant morbi
+tristique senectus et netus et malesuada fames ac turpis egestas. Fusce quis
+maximus mauris, ac rutrum eros. Mauris massa arcu, feugiat eu aliquam a,
+scelerisque ut tellus.
 
 # R code
 
 Can be inserted in regular R markdown blocks.
 
-```{r}
-x <- 1:10
-x
-```
+# Bibliography
+
+To be done ...
