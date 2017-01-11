@@ -9,6 +9,21 @@ $endif$
 
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{graphicx}
+
+% BEGIN: TABLES
+\usepackage{longtable, booktabs} % FOR KNITR TABLES
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% END: TABLES
+
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 

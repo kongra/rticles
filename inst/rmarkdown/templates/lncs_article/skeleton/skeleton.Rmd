@@ -85,7 +85,7 @@ summary(dt)
 
 Allowing to plot like in the following figure:
 
-```{r echo = TRUE, fig.cap="A simple plot", out.width="75%"}
+```{r echo=TRUE, fig.cap="A simple plot", out.width="75%"}
 ggplot(data = dt, mapping = aes(x, y)) + geom_point(alpha = 0.25)
 
 ```
@@ -96,6 +96,14 @@ Formulas may be embedded in the text like the one $X \sim \mathcal{N}(\mu,\,\sig
 \begin{equation}
 X \sim \mathcal{N}(\mu,\,\sigma^{2})\,
 \end{equation}
+
+# Tables
+
+To present information in tables one can use snippets like these below:
+
+```{r echo=FALSE, results='asis'}
+knitr::kable(dt, caption = "Data-table dt")
+```
 
 # Bibliography
 
