@@ -4,7 +4,8 @@
 \alias{lncs_article}
 \title{Lecture Notes in Computer Science (LNCS) proceedings format.}
 \usage{
-lncs_article(..., keep_tex = TRUE)
+lncs_article(..., keep_tex = TRUE, chunk_highlight = FALSE,
+  chunk_prompt = FALSE, chunk_comment = NA)
 }
 \arguments{
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}

@@ -18,7 +18,11 @@
 #' }
 #'
 #' @export
-lncs_article <- function(..., keep_tex = TRUE) {
+lncs_article <- function(...,
+                         keep_tex        = TRUE,
+                         chunk_highlight = FALSE,
+                         chunk_prompt    = FALSE,
+                         chunk_comment   = NA) {
 
   template <- find_resource("lncs_article", "template.tex")
 
@@ -27,9 +31,9 @@ lncs_article <- function(..., keep_tex = TRUE) {
   # Mostly copied from knitr::render_sweave
   base$knitr$opts_knit$out.format  <- "sweave"
 
-  base$knitr$opts_chunk$prompt     <- TRUE
-  base$knitr$opts_chunk$comment    <- NA
-  base$knitr$opts_chunk$highlight  <- FALSE
+  base$knitr$opts_chunk$prompt     <- chunk_prompt
+  base$knitr$opts_chunk$comment    <- chunk_comment
+  base$knitr$opts_chunk$highlight  <- chunk_highlight
 
   base$knitr$opts_chunk$dev.args   <- list(pointsize = 11)
   base$knitr$opts_chunk$fig.width  <- 4.9 # 6.125" * 0.8, as in template

@@ -1,7 +1,13 @@
 ---
 author: 
   formatted: John Smith, Jan Kowalski
-  running: Smith J., Kowalski J. 
+  running: Smith J., Kowalski J.
+affiliations: >
+  IT Institute \newline
+  University of Social Science (SAN) \newline
+  Sienkiewicza 9, 90-113 Lodz \newline
+  \url{kgrzanek@spoleczna.pl}
+  
 title:
   formatted: "A Capitalized Title of My Paper in LNCS"
   running:   "A Capitalized Title"
@@ -12,12 +18,14 @@ abstract: >
   eget diam. Quisque id tellus eu orci mollis sagittis aliquam ut dolor. Nam nec
   ex ut orci eleifend malesuada in lobortis eros. Nulla non magna ante. Phasellus
   congue viverra fringilla.
-keywords:
-  # at least one keyword must be supplied
-  formatted: [keywords, not capitalized, "and so on"]
+keywords: keywords, not capitalized, "and so on"
 preamble: >
-  \usepackage{amsmath, amssymb, amsfont}
-output: rticles::lncs_article
+  \usepackage{babel}
+output: 
+  rticles::lncs_article:
+    chunk_highlight: TRUE
+    chunk_prompt:    FALSE
+cmyk: TRUE
 ---
 
 # Introduction
@@ -59,6 +67,35 @@ scelerisque ut tellus.
 # R code
 
 Can be inserted in regular R markdown blocks.
+
+```{r}
+# Use proper libraries ...
+library(data.table)
+library(ggplot2)
+
+# ... to generate data.
+x  <- seq(from = -1, to = 1, length.out = 1000)
+y  <- 2 * x * 3 * rnorm(1000, sd = 0.5)
+dt <- data.table(x = x, y = y)
+
+summary(dt)
+```
+
+# Plots
+
+Allowing to plot like in the following figure:
+
+```{r echo = TRUE, fig.cap="A simple plot", out.width="75%"}
+ggplot(data = dt, mapping = aes(x, y)) + geom_point(alpha = 0.25)
+
+```
+
+# Formulas and Equations
+
+Formulas may be embedded in the text like the one $X \sim \mathcal{N}(\mu,\,\sigma^{2})\,$, or they may be placed in a separate line: $$y = Ax + b$$ or like
+\begin{equation}
+X \sim \mathcal{N}(\mu,\,\sigma^{2})\,
+\end{equation}
 
 # Bibliography
 
