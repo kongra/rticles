@@ -3,10 +3,10 @@ author:
   formatted: John Smith, Jan Kowalski
   running: Smith J., Kowalski J.
 affiliations: >
-  IT Institute \newline
-  University of Social Science (SAN) \newline
-  Sienkiewicza 9, 90-113 Lodz \newline
-  \url{kgrzanek@spoleczna.pl}
+  Some Institute \newline
+  University of Something (UoS) \newline
+  Beverly Hills 90210, LA \newline
+  \url{some.it@uos.edu}
   
 title:
   formatted: "A Capitalized Title of My Paper in LNCS"
@@ -25,12 +25,19 @@ output:
   rticles::lncs_article:
     chunk_highlight: TRUE
     chunk_prompt:    FALSE
-cmyk: TRUE
+cmyk: FALSE
 ---
 
 # Introduction
 
 This template demonstrates some of the basic latex you'll need to know to create a LNCS article.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
+maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
+sagittis posuere in a lacus. Sed quis enim eget justo gravida sollicitudin quis
+eget diam. Quisque id tellus eu orci mollis sagittis aliquam ut dolor. Nam nec
+ex ut orci eleifend malesuada in lobortis eros. Nulla non magna ante. Phasellus
+congue viverra fringilla.
 
 # Solution
 
@@ -85,7 +92,7 @@ summary(dt)
 
 Allowing to plot like in the following figure:
 
-```{r echo=TRUE, fig.cap="A simple plot", out.width="75%"}
+```{r echo = TRUE, fig.cap="A simple plot", out.width="75%"}
 ggplot(data = dt, mapping = aes(x, y)) + geom_point(alpha = 0.25)
 
 ```
@@ -99,12 +106,90 @@ X \sim \mathcal{N}(\mu,\,\sigma^{2})\,
 
 # Tables
 
-To present information in tables one can use snippets like these below:
+To present information in tables one can use snippets like these below (using *knitr*):
 
-```{r echo=FALSE, results='asis'}
-knitr::kable(dt, caption = "Data-table dt")
+```{r echo=TRUE, results='asis'}
+knitr::kable(dt[1:5], caption = "Data-table dt")
 ```
 
-# Bibliography
+You can also use *pander*:
 
-To be done ...
+```{r echo=TRUE}
+n <- 100
+x <- rnorm(n)
+y <- 2*x + rnorm(n)
+out <- lm(y ~ x)
+library(pander)
+panderOptions("digits", 2)
+pander(out)
+```
+
+\begin{thebibliography}{4}
+
+\bibitem{Bacchus-98}Bacchus F., Yee Whye Teh: Making Forward Chaining
+  Relevant, In: Proc. 4$^{th}$ Intl. Conf. AI Planning Systems (1998)
+
+\bibitem{Ugur-04} Ugur K., Nau D.: Forward-Chaining Planning in
+  Nondeterministic Domains. In: (AAAI-04) Nineteenth National
+  Conference on Artificial Intelligence (2004)
+
+\bibitem{Siler-05} Siler W., Buckley J.J.: Fuzzy Expert Systems and
+  Fuzzy Reasoning. John Wiley \& Sons, Inc. (2005)
+
+\bibitem{Sasikumar-07} Sasikumar M., Ramani S., Muthu Raman S., KSR
+  Anjaneyulu Chandrasekar R.: A Practical Introduction to Rule Based
+  Expert Systems. Narosa Publishing House, New Delhi (2007)
+
+\bibitem{Polach-10} Polach P., Valenta J., Jirsik V.: Knowledge coding
+  methods for rule-based expert systems. WSEAS Transactions on
+  Information Science and Applications, Issue 8, Volume 7,
+  pp. 1101-1114 (August 2010)
+
+\bibitem{Clayman-93} Clayman S.: Developing and Measuring Parallel
+  Rule-Based Systems in a Functional Programming Environment. PhD
+  Thesis. University College London, Department of Computer Science
+  (1993)
+
+\bibitem{Forgy-79} Forgy Ch.: On the efficient implementation of
+  production systems. Department of Computer Science, Carnegie-Mellon
+  University (1979)
+
+\bibitem{Doorenbos-95} Doorenbos R. B.: Production Matching for Large
+  Learning Systems. PhD Thesis. Computer Science Department, Carnegie
+  Mellon University Pittsburgh, PA (1995)
+
+\bibitem{BirdWadler-88} Bird R., Wadler R.: Introduction to Functional
+  Programming. Series in Computer Science (Editor:
+  C.A.R. Hoare). Prentice Hall International (UK) Ltd (1988)
+
+\bibitem{RWH-09} O'Sullivan B., Goerzen J., Stewart D.: Real World
+  Haskell. O'Reilly Media, Inc. (2009)
+
+\bibitem{Lipovaca-11} Lipovaca M.: Learn You a Haskell for Great
+  Good!: A Beginner's Guide. No Starch Press; 1$^{st}$ edition (April 21,
+  2011)
+
+\bibitem{StateMonad-Wikibook} Understanding monads, State:
+  Haskell Wikibook,
+  \url{https://en.wikibooks.org/wiki/Haskell/Understanding_monads/State}
+  (2015)
+
+\bibitem{vanLaarhoven-09} van Laarhoven T.: CPS based functional
+  references.
+  \url{http://twanvl.nl/blog/haskell/cps-functional-references} (2009)
+
+\bibitem{OConnor-11} O'Connor R.: Functor is to Lens as Applicative is
+  to Biplate: Introducing Multiplate. ACM SIGPLAN 7th Workshop on
+  Generic Programming, Tokyo (2011)
+
+\bibitem{EKmett} Kmett E.: Lenses, Folds, and Travelsals - Haskell
+  Package. \url{https://github.com/ekmett/lens} (2015)
+
+\bibitem{Arnold-14} Arnold J.: Lens Tutorial -
+  Introduction. \url{http://blog.jakubarnold.cz/2014/07/14/lens-tutorial-introduction-part-1.html}
+
+\bibitem{Marlow-13} Marlow S.: Parallel and Concurrent Programming in
+  Haskell. ISBN: 978-1-449-33594-6. O’Reilly Media, Inc., 1005
+  Gravenstein Highway North, Sebastopol, CA 95472 (2013)
+
+\end{thebibliography}

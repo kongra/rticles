@@ -8,7 +8,12 @@ $endif$
 % END: COLOR MODEL
 
 \usepackage{amsmath, amssymb, amsfonts}
+\setcounter{tocdepth}{3}
 \usepackage{graphicx}
+\usepackage{url}
+
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
 
 % BEGIN: TABLES
 \usepackage{longtable, booktabs} % FOR KNITR TABLES
@@ -23,9 +28,6 @@ $endif$
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
 % END: TABLES
-
-\newcommand{\keywords}[1]{\par\addvspace\baselineskip
-\noindent\keywordname\enspace\ignorespaces#1}
 
 % BEGIN: CHUNK (CODE) HIGHLIGHT
 % \usepackage{color} % NOT NEEDED DUE TO USE OF xcolor VIA pst-all
