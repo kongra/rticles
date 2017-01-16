@@ -19,7 +19,8 @@ R Markdown output format to pass to
 \description{
 Format for creating Lecture Notes in Computer Science (LNCS) proceedings articles. Adapted
 from
-\href{http://www.springer.com/comp/lncs/authors.html}{http://www.springer.com/comp/lncs/authors.html}.
+\href{http://www.springer.com/comp/lncs/authors.html}
+{http://www.springer.com/comp/lncs/authors.html}.
 }
 \examples{
 

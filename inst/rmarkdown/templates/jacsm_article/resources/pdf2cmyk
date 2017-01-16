@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pdfname=$1
+cmykname="${pdfname%.*}"
+cmykname="$cmykname.cmyk.pdf"
+
+gs -o $cmykname                    \
+   -sDEVICE=pdfwrite               \
+   -dCompatibilityLevel=1.4        \
+   -dNOPAUSE -dBATCH               \
+   -dColorConversionStrategy=/CMYK \
+   -dProcessColorModel=/DeviceCMYK \
+   <(pdftops -level3sep $pdfname -)

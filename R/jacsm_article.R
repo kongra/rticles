@@ -1,9 +1,7 @@
-#' Lecture Notes in Computer Science (LNCS) proceedings format.
+#' Journal of Applied Computer Science Methods (JACSM) article format.
 #'
-#' Format for creating Lecture Notes in Computer Science (LNCS) proceedings articles. Adapted
-#' from
-#' \href{http://www.springer.com/comp/lncs/authors.html}
-#' {http://www.springer.com/comp/lncs/authors.html}.
+#' Format for creating JACSM articles. Based on
+#' \href{https://www.degruyter.com/view/j/jacsm}{https://www.degruyter.com/view/j/jacsm}.
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
@@ -15,17 +13,17 @@
 #'
 #' \dontrun{
 #' library(rmarkdown)
-#' draft("MyArticle.Rmd", template = "lncs_article", package = "rticles")
+#' draft("MyArticle.Rmd", template = "jacsm_article", package = "rticles")
 #' }
 #'
 #' @export
-lncs_article <- function(...,
+jacsm_article <- function(...,
                          keep_tex        = TRUE,
                          chunk_highlight = FALSE,
                          chunk_prompt    = FALSE,
                          chunk_comment   = NA) {
 
-  template <- find_resource("lncs_article", "template.tex")
+  template <- find_resource("jacsm_article", "template.tex")
 
   base <- inherit_pdf_document(..., template = template, keep_tex = keep_tex)
 
