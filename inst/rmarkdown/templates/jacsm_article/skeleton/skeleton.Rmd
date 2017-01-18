@@ -1,16 +1,17 @@
 ---
-author: 
-  formatted: John Smith, Jan Kowalski
-  running: Smith J., Kowalski J.
-affiliations: >
-  Some Institute \newline
-  University of Something (UoS) \newline
-  Beverly Hills 90210, LA \newline
-  \url{some.it@uos.edu}
-  
-title:
-  formatted: "A Capitalized Title of My Paper in JACSM"
-  running:   "A Capitalized Title"
+author:
+  - name: Konrad Grzanek
+    affiliationId: 1
+  - name: Andrzej Cader
+    affiliationId: 1
+affiliation:
+  - id: 1
+    formatted: >
+      IT Institute, University of Social Sciences
+      \newline 9 Sienkiewicza St., 90-113 \L\'od\'z, Poland
+      \newline
+      {\fontsize{10pt}{12pt} \emph{kgrzanek@spoleczna.pl}, \emph{acader@spoleczna.pl}}
+title: "A Capitalized Title of My Paper in JACSM"
 abstract: >
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
   maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
@@ -25,12 +26,12 @@ output:
   rticles::jacsm_article:
     chunk_highlight: TRUE
     chunk_prompt:    FALSE
-cmyk: FALSE
----
+cmyk:     FALSE
+mathptmx: FALSE
 
 # Introduction
 
-This template demonstrates some of the basic latex you'll need to know to create a LNCS article.
+This template demonstrates some of the basic latex you'll need to know to create a JACSM article.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
 maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
