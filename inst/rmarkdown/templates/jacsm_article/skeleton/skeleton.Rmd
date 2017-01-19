@@ -6,11 +6,9 @@ author:
     affiliationId: 1
 affiliation:
   - id: 1
-    formatted: >
-      IT Institute, University of Social Sciences
-      \newline 9 Sienkiewicza St., 90-113 \L\'od\'z, Poland
-      \newline
-      {\fontsize{10pt}{12pt} \emph{kgrzanek@spoleczna.pl}, \emph{acader@spoleczna.pl}}
+    name: ["IT Institute, University of Social Sciences", 
+           "9 Sienkiewicza St., 90-113 Lodz, Poland"]
+    emails: ["kgrzanek@spoleczna.pl", "acader@spoleczna.pl"]
 title: "A Capitalized Title of My Paper in JACSM"
 abstract: >
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
@@ -28,10 +26,20 @@ output:
     chunk_prompt:    FALSE
 cmyk:     FALSE
 mathptmx: FALSE
+---
 
 # Introduction
 
 This template demonstrates some of the basic latex you'll need to know to create a JACSM article.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
+maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
+sagittis posuere in a lacus. Sed quis enim eget justo gravida sollicitudin quis
+eget diam. Quisque id tellus eu orci mollis sagittis aliquam ut dolor. Nam nec
+ex ut orci eleifend malesuada in lobortis eros. Nulla non magna ante. Phasellus
+congue viverra fringilla.
+
+## Also add some subsection
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
 maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
@@ -104,26 +112,6 @@ Formulas may be embedded in the text like the one $X \sim \mathcal{N}(\mu,\,\sig
 \begin{equation}
 X \sim \mathcal{N}(\mu,\,\sigma^{2})\,
 \end{equation}
-
-# Tables
-
-To present information in tables one can use snippets like these below (using *knitr*):
-
-```{r echo=TRUE, results='asis'}
-knitr::kable(dt[1:5], caption = "Data-table dt")
-```
-
-You can also use *pander*:
-
-```{r echo=TRUE}
-n <- 100
-x <- rnorm(n)
-y <- 2*x + rnorm(n)
-out <- lm(y ~ x)
-library(pander)
-panderOptions("digits", 2)
-pander(out)
-```
 
 \begin{thebibliography}{4}
 

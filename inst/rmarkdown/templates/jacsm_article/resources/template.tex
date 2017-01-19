@@ -1,5 +1,17 @@
 \documentclass[a4paper]{article}
 
+% SET DOCUMENT GEOMETRY
+\special{papersize=210mm,297mm}
+\usepackage[a4paper, top=5.0cm, bottom=5.4cm, left=4.5cm, right=4.3cm]{geometry}
+
+% SET MAIN FONT SPACING
+\usepackage[singlespacing]{setspace}
+
+% SECTIONS/SUBSECTIONS FONT SIZES
+\usepackage{sectsty}
+\sectionfont{\fontsize{12pt}{15pt}\selectfont}
+\subsectionfont{\fontsize{11pt}{15pt}\selectfont}
+
 % DISABLE PAGE NUMBERING FOR WHOLE ARTICLE
 \pagenumbering{gobble}
 
@@ -68,7 +80,7 @@ $endif$
 % BOLD SMALL-CAPS (IN THE TITLE)
 \usepackage{bold-extra}
 
-% PROPER FIGURESS AND TABLES CAPTIONS
+% PROPER FIGURES AND TABLES CAPTIONS
 \usepackage[labelfont=bf, labelsep=period]{caption}
 
 % BIBLIOGRAPHY
@@ -78,6 +90,8 @@ $endif$
 % FANCY AUTHORS/AFFILIATIONS FORMATING
 \usepackage[noblocks]{authblk}
 \usepackage{varwidth}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{rm}
 
 % NO UGLY DATE
 \date{}
@@ -86,27 +100,29 @@ $endif$
 \begin{document}
 
 % TITLE
-\title{\bfseries{\scshape{$title$}}}
+\title{\fontsize{14pt}{20pt}\selectfont {\bfseries{\scshape{$title$}}}}
 
 % AUTHORS/AFFILIATIONS
 $for(author)$
-\author[$author.affiliationId$]{$author.name$}
+  \author[$author.affiliationId$]{$author.name$}
 $endfor$
-
 $for(affiliation)$
-\affil[$affiliation.id$]{
-\protect\begin{varwidth}[t]{\linewidth}\protect\centering
-$affiliation.formatted$
-\protect\end{varwidth}}
+  \affil[$affiliation.id$]{
+    \protect\begin{varwidth}[t]{\linewidth}\protect\centering
+    {\fontsize{10pt}{10pt}\selectfont
+      $for(affiliation.name)$ $affiliation.name$\newline $endfor$}
+    {\fontsize{9pt}{9pt}\selectfont
+      $for(affiliation.emails)$ \emph{$affiliation.emails$}$sep$, $endfor$}
+    \protect\end{varwidth}}
 $endfor$
 
 \maketitle
 
 % ABSTRACT ...
 \begin{abstract}
-  \noindent $abstract$ \newline \newline
+  \noindent {\fontsize{9pt}{9pt}\selectfont $abstract$ \newline \newline
   % ... WITH KEYWORDS
-  \textbf{Keywords:} $keywords$
+  \textbf{Keywords:} $keywords$}
 \end{abstract}
 
 $body$
