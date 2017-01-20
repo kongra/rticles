@@ -19,7 +19,6 @@ abstract: >
   congue viverra fringilla.
 keywords: keywords, not capitalized, "and so on"
 preamble: >
-  % PREAMBLE GOES HERE
 output: 
   rticles::jacsm_article:
     chunk_highlight: TRUE
