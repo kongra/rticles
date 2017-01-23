@@ -103,7 +103,7 @@ $if(preamble)$$preamble$$endif$
 \begin{document}
 
 % TITLE
-\title{\fontsize{14pt}{20pt}\selectfont {\bfseries{\scshape{$title$}}}}
+\title{\fontsize{14pt}{20pt}\selectfont {\bfseries{\scshape{$title$}}} \vspace{5mm}}
 
 % AUTHORS/AFFILIATIONS
 $for(author)$
@@ -126,6 +126,7 @@ $endfor$
   \noindent {\fontsize{9pt}{9pt}\selectfont $abstract$ \newline \newline
   % ... WITH KEYWORDS
   \textbf{Keywords:} $keywords$}
+  \vspace{5mm}
 \end{abstract}
 
 $body$
