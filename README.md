@@ -1,16 +1,10 @@
 
 ### Installation
 
-You can install and use **rticles** from CRAN as follows:
+If you wish to install our custom development version from GitHub you can do this:
 
 ```r
-install.packages("rticles", type = "source")
-```
-
-If you wish to install the development version from GitHub you can do this:
-
-```r
-devtools::install_github("rstudio/rticles")
+devtools::install_github("kongra/rticles")
 ```
 
 
@@ -33,6 +27,10 @@ The **rticles** package provides a suite of custom [R Markdown](http://rmarkdown
 - [Elsevier](https://www.elsevier.com) journal submissions
 
 - [AEA](https://www.aeaweb.org/journals/policies/templates) journal submissions
+
+- [LNCS](https://www.springer.com/gp/computer-science/lncs) proceedings submissions
+
+- [JACSM](https://acsm.spoleczna.pl) proceedings submissions
 
 Under the hood, LaTeX templates are used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and R code and its output can be seamlessly included using [knitr](http://yihui.name/knitr/).
 
@@ -61,7 +59,7 @@ To use **rticles** from RStudio:
 
     
     install.packages("rmarkdown")
-    devtools::install_github("rstudio/rticles")
+    devtools::install_github("kongra/rticles")
     
     
 3) Use the `rmarkdown::draft` function to create articles:
