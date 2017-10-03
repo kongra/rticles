@@ -31,4 +31,3 @@ draft("MyArticle.Rmd", template = "aea_article", package = "rticles")
 }
 
 }
-

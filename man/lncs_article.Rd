@@ -30,4 +30,3 @@ draft("MyArticle.Rmd", template = "lncs_article", package = "rticles")
 }
 
 }
-

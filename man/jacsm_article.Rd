@@ -28,4 +28,3 @@ draft("MyArticle.Rmd", template = "jacsm_article", package = "rticles")
 }
 
 }
-
