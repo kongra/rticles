@@ -32,14 +32,19 @@ contribute](#how-to-contribute) below.
 
 ## Installation
 
-You can install and use **rticles** from CRAN as follows:
+To install this fork (includes JACSM support):
+
+``` r
+devtools::install_github("kongra/rticles")
+```
+
+To install the upstream package from CRAN:
 
 ``` r
 install.packages("rticles")
 ```
 
-If you wish to install the development version from GitHub (which often
-contains new article formats), you can do this:
+To install the upstream development version from GitHub:
 
 ``` r
 # install.packages("pak")
@@ -103,6 +108,7 @@ Currently included templates and their contributors are the following:
 | [INFORMS: Institute for Operations Research and the Management Sciences](https://www.informs.org/) | [@robjhyndman](https://github.com/robjhyndman) | [\#460](https://github.com/rstudio/rticles/pull/460) | `informs_article()` |
 | [ISBA: International Society for Bayesian Analysis](https://bayesian.org/) | [@dmi3nko](https://github.com/dmi3kno) | [\#461](https://github.com/rstudio/rticles/pull/461) | `isba_article()` |
 | IOP: Institute of Physics (`https://iopscience.iop.org`) | [@robjhyndman](https://github.com/robjhyndman) | [\#462](https://github.com/rstudio/rticles/pull/462) | `iop_article()` |
+| [JACSM: Journal of Applied Computer Science Methods](https://www.degruyter.com/view/j/jacsm) | [@kongra](https://github.com/kongra), [@acader](https://github.com/acader) | [kongra/rticles](https://github.com/kongra/rticles) | `jacsm_article()` |
 | [JASA: Journal of the Acoustical Society of America](https://pubs.aip.org/asa/jasa) | [@stefanocoretta](https://github.com/stefanocoretta) | [\#364](https://github.com/rstudio/rticles/pull/364) | `jasa_article()` |
 | [Journal of Educational Data Mining](https://jedm.educationaldatamining.org/index.php/JEDM/about/submissions) journal submissions | [@jooyoungseo](https://github.com/jooyoungseo) | [\#251](https://github.com/rstudio/rticles/pull/251) | `jedm_article()` |
 | [JOSS: Journal of Open Source Software](https://joss.theoj.org/) [JOSE: Journal of Open Source Education](https://jose.theoj.org/) | [@noamross](https://github.com/noamross) | [\#229](https://github.com/rstudio/rticles/pull/229) | `joss_article()` |
@@ -136,12 +142,13 @@ rticles::journals()
 #>  [9] "asa"            "bioinformatics" "biometrics"     "copernicus"    
 #> [13] "ctex"           "elsevier"       "frontiers"      "glossa"        
 #> [17] "ieee"           "ims"            "informs"        "iop"           
-#> [21] "isba"           "jasa"           "jedm"           "joss"          
-#> [25] "jss"            "lipics"         "lncs"           "mdpi"          
-#> [29] "mnras"          "oup_v0"         "oup_v1"         "peerj"         
-#> [33] "pihph"          "plos"           "pnas"           "rjournal"      
-#> [37] "rsos"           "rss"            "sage"           "sim"           
-#> [41] "springer"       "tf"             "trb"            "wellcomeor"
+#> [21] "isba"           "jacsm"          "jasa"           "jedm"          
+#> [25] "joss"           "jss"            "lipics"         "lncs"          
+#> [29] "mdpi"           "mnras"          "oup_v0"         "oup_v1"        
+#> [33] "peerj"          "pihph"          "plos"           "pnas"          
+#> [37] "rjournal"       "rsos"           "rss"            "sage"          
+#> [41] "sim"            "springer"       "tf"             "trb"           
+#> [45] "wellcomeor"
 ```
 
 Those are the values to use within `rmarkdown::draft()`.
