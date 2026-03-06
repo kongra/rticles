@@ -1,6 +1,6 @@
 Type: Package
 Package: rticles
-Title: Article Formats for R Markdown
+Title: Article Formats for R Markdown (fork with JACSM support)
 Version: 0.27.12.9000
 Authors@R: c(
     person("JJ", "Allaire", , "jj@posit.co", role = "aut"),
@@ -85,8 +85,10 @@ Authors@R: c(
     person("Konrad", "Grzanek", , "kgrzanek@spoleczna.pl", role = c("aut", "cph")),
     person("Andrzej", "Cader", , "acader@spoleczna.pl", role = c("aut", "cph"))
   )
-Description: A suite of custom R Markdown formats and templates for
-    authoring journal articles and conference submissions.
+Description: A fork of rstudio/rticles adding the JACSM (Journal of
+    Applied Computer Science Methods) article format. Provides a suite of
+    custom R Markdown formats and templates for authoring journal articles
+    and conference submissions.
 License: GPL-3
 URL: https://github.com/kongra/rticles
 BugReports: https://github.com/kongra/rticles/issues
