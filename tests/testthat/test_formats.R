@@ -1,24 +1,15 @@
 
-context("Formats")
+context("Custom formats (kongra/rticles fork)")
 
-test_format <- function(name, file_check = TRUE, os_skip = NULL) {
-
+test_format <- function(name) {
   test_that(paste(name, "format"), {
-
-    # don't run on cran because pandoc is required
     skip_on_cran()
 
-    # skip on os if requested
-    if (!is.null(os_skip))
-      skip_on_os(os_skip)
-
-    # work in a temp directory
     dir <- tempfile()
     dir.create(dir)
     oldwd <- setwd(dir)
     on.exit(setwd(oldwd), add = TRUE)
 
-    # create a draft of the format
     testdoc <- "testdoc.Rmd"
     rmarkdown::draft(testdoc,
                      system.file("rmarkdown", "templates", name,
@@ -26,29 +17,14 @@ test_format <- function(name, file_check = TRUE, os_skip = NULL) {
                      create_dir = FALSE,
                      edit = FALSE)
 
-    # render it
     capture.output({
-      if (file_check) {
-        output_file <- tempfile(fileext = ".pdf")
-        rmarkdown::render(testdoc, output_file = output_file)
-        expect_true(file.exists(output_file))
-      } else {
-        rmarkdown::render(testdoc)
-      }
+      output_file <- tempfile(fileext = ".pdf")
+      rmarkdown::render(testdoc, output_file = output_file)
+      expect_true(file.exists(output_file))
     })
   })
 }
 
-test_format("acm_article")
-test_format("elsevier_article")
-test_format("jss_article")
-test_format("rjournal_article", file_check = FALSE)
-test_format("acs_article", file_check = FALSE)
-test_format("pnas_article")
-test_format("aea_article")
-test_format("ams_article", file_check = FALSE)
-test_format("lncs_article")
-test_format("jacsm_article")
-
-
-
+# Only test our custom format; all upstream formats are tested in upstream's
+# own test suite.
+test_format("jacsm")

@@ -1,0 +1,115 @@
+\documentclass[a4paper]{article}
+
+% SET DOCUMENT GEOMETRY
+\special{papersize=210mm,297mm}
+\usepackage[a4paper, top=5.0cm, bottom=5.4cm, left=4.5cm, right=4.3cm]{geometry}
+
+% SET MAIN FONT SPACING
+\usepackage[singlespacing]{setspace}
+
+% SECTIONS/SUBSECTIONS FONT SIZES
+\usepackage{sectsty}
+\sectionfont{\fontsize{12pt}{15pt}\selectfont}
+\subsectionfont{\fontsize{11pt}{15pt}\selectfont}
+
+% DISABLE PAGE NUMBERING FOR WHOLE ARTICLE
+\pagenumbering{gobble}
+
+% COLOR MODEL
+$if(cmyk)$
+\PassOptionsToPackage{cmyk}{xcolor}
+$endif$
+\usepackage{xcolor}
+
+% COMMONS
+\usepackage{amsmath, amssymb, amsfonts}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{url}
+
+% TABLES
+\usepackage{longtable, booktabs}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+% SYNTAX HIGHLIGHTING
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% USE TimesNewRoman
+$if(mathptmx)$
+\usepackage{mathptmx}
+$endif$
+\usepackage{times}
+
+% BOLD SMALL-CAPS (IN THE TITLE)
+\usepackage{bold-extra}
+
+% PROPER FIGURES AND TABLES CAPTIONS
+\usepackage[labelfont=bf, labelsep=period]{caption}
+
+% BIBLIOGRAPHY
+\makeatletter
+\def\@biblabel#1{\@ifnotempty{#1}{#1.}}
+
+% FANCY AUTHORS/AFFILIATIONS FORMATING
+\usepackage[noblocks]{authblk}
+\usepackage{varwidth}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{rm}
+
+% ITEMIZE FORMATTING
+\usepackage{enumitem}
+\def\labelitemi{--}
+\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.3cm}
+\setlist[enumerate,1]{leftmargin=\dimexpr 26pt-.3cm}
+\setlist{nolistsep}
+
+% NO UGLY DATE
+\date{}
+
+% PREAMBLE:
+$if(preamble)$$preamble$$endif$
+
+% CONTENT BEGINS HERE
+\begin{document}
+
+% TITLE
+\title{\fontsize{14pt}{20pt}\selectfont {\bfseries{\scshape{$title$}}} \vspace{5mm}}
+
+% AUTHORS/AFFILIATIONS
+$for(author)$
+  \author[$author.affiliationId$]{$author.name$}
+$endfor$
+$for(affiliation)$
+  \affil[$affiliation.id$]{
+    \protect\begin{varwidth}[t]{\linewidth}\protect\centering
+    {\fontsize{10pt}{10pt}\selectfont
+      $for(affiliation.name)$ $affiliation.name$\newline $endfor$}
+    {\fontsize{9pt}{9pt}\selectfont
+      $for(affiliation.emails)$ \emph{$affiliation.emails$}$sep$, $endfor$}
+    \protect\end{varwidth}}
+$endfor$
+
+\maketitle
+
+% ABSTRACT ...
+\begin{abstract}
+  \noindent {\fontsize{9pt}{9pt}\selectfont $abstract$ \newline \newline
+  % ... WITH KEYWORDS
+  \textbf{Keywords:} $keywords$}
+  \vspace{5mm}
+\end{abstract}
+
+$body$
+
+\end{document}

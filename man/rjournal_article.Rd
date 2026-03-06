@@ -4,24 +4,12 @@
 \alias{rjournal_article}
 \title{R Journal format.}
 \usage{
-rjournal_article(...)
-}
-\arguments{
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
-}
-\value{
-R Markdown output format to pass to
-  \code{\link[rmarkdown:render]{render}}
+rjournal_article(..., keep_tex = TRUE, citation_package = "natbib")
 }
 \description{
-Format for creating R Journal articles. Adapted from
-\href{https://journal.r-project.org/submissions.html}{https://journal.r-project.org/submissions.html}.
-}
-\examples{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-\dontrun{
-library(rmarkdown)
-draft("MyArticle.Rmd", template = "rjournal_article", package = "rticles")
+This function is now defunct in favor of the \href{https://rjournal.github.io/rjtools/}{\strong{rjtools}} package
+which is now officialy recommanded by R Journal \url{https://rjournal.github.io/submissions.html}.
 }
-
-}
+\keyword{internal}

@@ -1,0 +1,79 @@
+---
+author:
+  - name: Konrad Grzanek
+    affiliationId: 1
+  - name: Andrzej Cader
+    affiliationId: 1
+affiliation:
+  - id: 1
+    name: ["IT Institute, University of Social Sciences",
+           "9 Sienkiewicza St., 90-113 Lodz, Poland"]
+    emails: ["kgrzanek@spoleczna.pl", "acader@spoleczna.pl"]
+title: "A Capitalized Title of My Paper in JACSM"
+abstract: >
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
+  maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
+  sagittis posuere in a lacus. Sed quis enim eget justo gravida sollicitudin quis
+  eget diam. Quisque id tellus eu orci mollis sagittis aliquam ut dolor. Nam nec
+  ex ut orci eleifend malesuada in lobortis eros. Nulla non magna ante. Phasellus
+  congue viverra fringilla.
+keywords: keywords, not capitalized, "and so on"
+cmyk: false
+mathptmx: false
+output:
+  rticles::jacsm_article:
+    keep_tex: true
+---
+
+# Introduction
+
+This template demonstrates some of the basic latex you'll need to know to
+create a JACSM article.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
+maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
+sagittis posuere in a lacus. Sed quis enim eget justo gravida sollicitudin quis
+eget diam. Quisque id tellus eu orci mollis sagittis aliquam ut dolor. Nam nec
+ex ut orci eleifend malesuada in lobortis eros. Nulla non magna ante. Phasellus
+congue viverra fringilla.
+
+## Also add some subsection
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum
+maximus tortor, vel ornare massa pretium eu. Mauris sit amet turpis id nunc
+sagittis posuere in a lacus.
+
+# Solution
+
+Suspendisse quam nisl, laoreet ut vehicula a, eleifend vel massa. Morbi
+faucibus sem varius placerat lacinia.
+
+# R code
+
+Can be inserted in regular R markdown blocks.
+
+```{r}
+x <- seq(from = -1, to = 1, length.out = 100)
+y <- 2 * x + rnorm(100, sd = 0.5)
+summary(data.frame(x, y))
+```
+
+# Plots
+
+```{r echo=TRUE, fig.cap="A simple plot", out.width="75%"}
+plot(x, y)
+```
+
+# Formulas and Equations
+
+Formulas may be embedded in the text like $X \sim \mathcal{N}(\mu,\,\sigma^{2})$,
+or placed on a separate line:
+
+$$y = Ax + b$$
+
+\begin{thebibliography}{4}
+
+\bibitem{example} Author A., Author B.: Title of the paper. Journal Name,
+  Vol. 1, No. 1, pp. 1--10 (2020)
+
+\end{thebibliography}

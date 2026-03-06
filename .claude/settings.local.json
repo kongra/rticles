@@ -5,7 +5,8 @@
       "Read(//usr/lib/x86_64-linux-gnu/**)",
       "Read(//usr/lib/**)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git:*)"
     ]
   }
 }
