@@ -1,0 +1,126 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+#
+# NOTE: This workflow is overkill for most R packages and
+# check-standard.yaml is likely a better choice.
+# usethis::use_github_action("check-standard") will install it.
+on:
+  push:
+    branches: [main, master]
+    paths-ignore:
+      - '_pkgdown.yml'
+      - 'pkgdown/**'
+      - '.github/workflows/pkgdown.yaml'
+  pull_request:
+    branches: [main, master]
+    paths-ignore:
+      - '_pkgdown.yml'
+      - 'pkgdown/**'
+      - '.github/workflows/pkgdown.yaml'
+  workflow_dispatch:
+
+name: R-CMD-check
+
+jobs:
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) [Pandoc ${{matrix.config.pandoc}}]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          # testing R release with last shipped pandoc version in RStudio IDE and new pandoc
+          - {os: windows-latest, pandoc: '3.6.3',    r: 'release'}
+          - {os: macOS-latest,   pandoc: '3.6.3',    r: 'release'}
+          - {os: ubuntu-latest,  pandoc: 'devel',    r: 'release'}
+          # testing older pandoc versions
+          - {os: ubuntu-latest,  pandoc: '3.8.2.1',  r: 'release'} # special counter table addition
+          - {os: ubuntu-latest,  pandoc: '3.2.1',    r: 'release'} # special \pandocbounded change
+          - {os: ubuntu-latest,  pandoc: '3.1.7',    r: 'release'} # special citeproc change
+          - {os: ubuntu-latest,  pandoc: '2.19.2',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.18',     r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.17.1.1', r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.16.2',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.14.2',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.7.3',    r: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.5',      r: 'release'}
+          # testing other R versions
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-1'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-2'}
+          - {os: ubuntu-latest,  pandoc: '2.11.4',   r: 'oldrel-3'}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+
+      - name: change temp dir
+        if: runner.os == 'Windows'
+        run: echo "TMPDIR=${{ runner.temp }}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Add some R options for later steps
+        run: |
+          cat("\noptions(tinytex.verbose = TRUE)\n", file = "~/.Rprofile", append = TRUE)
+          cat(readLines("~/.Rprofile"), sep = "\n")
+        shell: Rscript {0}
+
+
+      - uses: r-lib/actions/setup-tinytex@v2
+        env:
+          # install full prebuilt version
+          TINYTEX_INSTALLER: TinyTeX
+
+      - name: preinstall some CTAN packages
+        run: |
+          tlmgr update --self
+          tlmgr install achemso adobemapping ae algorithmicx algorithms amscls apacite arphic babel-english babel-french beamer biblatex bookmark caption carlisle changepage charter chemgreek cite cjk cjkpunct cns colortbl courier crop ctablestack ctex datetime dblfloatfix draftwatermark endfloat endnotes enumitem environ epsf epstopdf eso-pic esvect etex-pkg everyhook everypage extsizes fancyhdr fandol floatflt fmtcount fontaxes fonts-tlwg footmisc forarray fp fpl garuda-c90 grfext hyphen-french hyphenat ifmtarg jknapltx kastrup lastpage latex-base-dev lettrine lineno listings logreq luatexbase luatexja ly1 marginnote marvosym mathpazo mathspec mdframed mhchem microtype minifp mnras morefloats moreverb mptopdf multirow needspace newfloat newtx norasi-c90 oberdiek palatino parskip pdfsync pgf placeins platex platex-tools preprint psfrag psnfss ptex ptex-base ptex-fonts ragged2e rsfs seqsplit setspace sidecap soul stix sttools subfigure svn-prov symbol tabto-ltx tcolorbox tex-gyre textcase titlesec totcount translator trimspaces ttfutils ucs uhc ulem units uplatex upquote uptex uptex-base uptex-fonts varwidth vruler wadalab wrapfig xcjk2uni xecjk xifthen xpinyin xstring xypic zapfchan zhmetrics zhmetrics-uptex zhnumber zref
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+
+      - name: Remove default installed Pandoc
+        if: runner.os == 'Linux'
+        run: sudo dpkg -r pandoc
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        if: matrix.config.pandoc != 'devel'
+        with:
+          pandoc-version: ${{ matrix.config.pandoc }}
+
+      - uses: cderv/actions/setup-pandoc-nightly@nightly-pandoc
+        if: matrix.config.pandoc == 'devel'
+
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ghostscript
+
+      - name: TeX Info
+        run: |
+          tinytex::tlmgr("--version")
+          tinytex::tl_pkgs()
+        shell: Rscript {0}
+
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          upload-snapshots: true
+
+      - name: Test coverage
+        if: success() && runner.os == 'Linux' && matrix.config.r == 'release' && matrix.config.pandoc == '2.19.2'
+        run: |
+          pak::pkg_install('covr')
+          covr::codecov()
+        shell: Rscript {0}

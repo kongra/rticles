@@ -1,0 +1,102 @@
+---
+title: "Example of journal's templates"
+resource_files:
+  - resources
+---
+
+```{r, setup, include = FALSE}
+library(rticles)
+```
+
+
+```{r, child = "_child_examples.Rmd"}
+```
+
+```{r, include = FALSE}
+# We generate the YAML file on the fly to render the gallery
+
+# helper
+gen_fun <- function(journal) {
+  # generic case
+  fun_name <- sprintf("%s_article", journal)
+  out_opts <- NULL
+  
+  # handles special case
+  if (grepl("oup_", journal)) {
+    fun_name <- sprintf("oup_article")
+    out_opts <- sprintf("oup_version = %s", gsub("oup_v(\\d)", "\\1", journal))
+  }
+  
+  list(fun_name = fun_name, out_opts = out_opts)
+  
+}
+
+# list of sites
+articles <- lapply(journals(), function(journal) {
+  name <- yaml::read_yaml(rticles:::pkg_file_template(journal, "template.yaml"))$name
+  img <- file.path("resources", paste0(journal, "_article.gif"))
+  href <- file.path("resources", paste0(journal, "_article.pdf"))
+  repo_url <- "https://github.com/rstudio/rticles/tree/main/inst/rmarkdown/templates/"
+  if (!file.exists(img) || !file.exists(href)) return(list())
+  fun <- gen_fun(journal)
+  list(
+    title = sprintf("%s - %s", journal, name),
+    yaml_format_opts = if (is.null(fun$out_opts)) "default" else c("", strwrap(sub(" = ", ": ", fun$out_opts), indent = 4)),
+    yaml_format_name = fun$fun_name,
+    fun = sprintf("%s()", fun$fun),
+    img = img, 
+    href = href,
+    source = paste0(repo_url, journal)
+  )
+})
+
+articles <- Filter(length, articles)
+```
+
+The examples below illustrate all the article's template included into this package. 
+
+```{r, include = FALSE}
+src <- lapply(articles, function(article) {
+  glue::glue_data(article, paste(
+    "## {{title}}",
+    "",
+    "```yaml",
+    "output: ",
+    "  {{yaml_format_name}}: {{glue::glue_collapse(yaml_format_opts, sep = '\n')}}",
+    "```",
+    "",
+    "::: {.two-columns}",
+    "[![]({{img}})]({{href}})",
+    "",
+    "* Format function: `{{fun}}`",
+    "",
+    "* [Template Sources]({{source}})",
+    "",
+    "* [PDF example]({{href}})",
+    "",
+    ":::",
+    "\n", sep = "\n"
+  ), .open = "{{", .close = "}}")
+})
+res <- knitr::knit_child(text = unlist(src), quiet = TRUE)
+```
+
+`r res`
+
+```{css, echo = FALSE}
+a > img {
+	border: unset;
+  border-style: solid;
+  border-color: #FEDB00;
+}
+
+.two-columns {
+  -webkit-columns: 2 300px;
+  -moz-columns: 2 300px;
+  columns: 2 300px;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
+  column-gap: 2em;
+}
+```
+

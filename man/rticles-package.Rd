@@ -6,13 +6,16 @@
 \alias{rticles-package}
 \title{rticles: Article Formats for R Markdown}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 A suite of custom R Markdown formats and templates for authoring journal articles and conference submissions.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/kongra/rticles}
-  \item Report bugs at \url{https://github.com/kongra/rticles/issues}
+  \item \url{https://github.com/rstudio/rticles}
+  \item \url{https://pkgs.rstudio.com/rticles/}
+  \item Report bugs at \url{https://github.com/rstudio/rticles/issues}
 }
 
 }
@@ -26,14 +29,14 @@ Authors:
   \item  R Foundation [copyright holder]
   \item Hadley Wickham \email{hadley@posit.co}
   \item  Journal of Statistical Software [copyright holder]
-  \item Ramnath  Vaidyanathan \email{ramnath.vaidya@gmail.com} [copyright holder]
+  \item Ramnath Vaidyanathan \email{ramnath.vaidya@gmail.com} [copyright holder]
   \item  Association for Computing Machinery [copyright holder]
   \item Carl Boettiger \email{cboettig@gmail.com} [copyright holder]
   \item  Elsevier [copyright holder]
   \item Karl Broman \email{kbroman@gmail.com} [copyright holder]
   \item Kirill Mueller \email{kirill.mueller@ivt.baug.ethz.ch} [copyright holder]
   \item Bastiaan Quast \email{bquast@gmail.com} [copyright holder]
-  \item Randall  Pruim \email{rpruim@gmail.com} [copyright holder]
+  \item Randall Pruim \email{rpruim@gmail.com} [copyright holder]
   \item Ben Marwick \email{bmarwick@uw.edu} [copyright holder]
   \item Charlotte Wickham \email{cwickham@gmail.com} [copyright holder]
   \item Oliver Keyes \email{okeyes@wikimedia.org} [copyright holder]
@@ -61,8 +64,6 @@ Authors:
   \item Shixiang Wang \email{w_shixiang@163.com} (\href{https://orcid.org/0000-0001-9855-7357}{ORCID}) [contributor]
   \item Jay Hesselberth \email{jay.hesselberth@gmail.com} (\href{https://orcid.org/0000-0002-6299-179X}{ORCID}) [contributor]
   \item Rob Hyndman \email{Rob.Hyndman@monash.edu} (\href{https://orcid.org/0000-0002-2140-5352}{ORCID})
-  \item Konrad Grzanek \email{kgrzanek@spoleczna.pl} [copyright holder]
-  \item Andrzej Cader \email{acader@spoleczna.pl} [copyright holder]
 }
 
 Other contributors:

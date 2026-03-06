@@ -83,7 +83,7 @@ Therefore, please keep the following in mind:
 }
 }
 \note{
-If you use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, all internal references (i.e. tables and figures) must use \verb{\\ref\{\}} whereas with \code{\link[bookdown:pdf_document2]{bookdown::pdf_document2()}}, you can additionally use \verb{\\@ref()}.
+If you use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}, all internal references (i.e. tables and figures) must use \verb{\\ref\{\}} whereas with \code{\link[bookdown:html_document2]{bookdown::pdf_document2()}}, you can additionally use \verb{\\@ref()}.
 }
 \examples{
 names(copernicus_journal_abbreviations())

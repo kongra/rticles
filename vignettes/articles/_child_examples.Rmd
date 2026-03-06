@@ -1,0 +1,75 @@
+---
+title: "child of Examples.Rmd"
+---
+
+```{r, message = TRUE, warning = TRUE, include = FALSE}
+# this is to generate the GIF and PDF for the gallery
+# This is done on GHA and there is a caching mechanism so that a new rendering
+# occurs only when needed
+
+library(rticles)
+library(magick)
+
+# dir setup
+hash_db_dir <- "cache"
+if (!dir.exists(hash_db_dir)) dir.create(hash_db_dir)
+out_dir <- "resources"
+if (!dir.exists(out_dir)) dir.create(out_dir)
+
+# ignore some journals 
+to_ignore <- c(
+  "ctex", # exclude ctex for now (issue to build)
+  "rjournal" # lives in rjtools package now.
+)
+
+for (journal in journals()) {
+  hash_db_file <- file.path(hash_db_dir, xfun::with_ext(journal, ".rds"))
+  out_files <- file.path(out_dir, xfun::with_ext(paste0(journal, "_article"), c("gif", "pdf")))
+  # clean for ignored journal
+  if (journal %in% to_ignore) {
+    # clean files
+    to_remove <- xfun::existing_files(c(out_files, hash_db_file))
+    if (length(to_remove)) unlink(to_remove)
+    next
+  }
+  # clean cache if no more files
+  if (!all(file.exists(out_files))) unlink(hash_db_file)
+  # Should we render new resource ? 
+  resource_path <- rticles:::pkg_file_template(journal)
+  template_files <- list.files(resource_path, recursive = TRUE)
+  template_files <- setNames(
+    file.path(resource_path, template_files), 
+    nm = template_files)
+  new_hash_db <- lapply(template_files, function(x) unname(tools::md5sum(x)))
+  if (file.exists(hash_db_file)) {
+    old_hash_db <- readRDS(hash_db_file)
+    if (identical(old_hash_db, new_hash_db)) {
+      message("No changes in templates. Skipping ",
+              journal, " format.")
+      next
+    }
+  }
+  message("Rendering to PDF...")
+  out_pdf <- xfun::try_silent(rticles:::render_draft(journal, quiet = TRUE))
+  if (inherits(out_pdf, "try-error")) {
+    warning("Error with rendering format ", journal,
+            immediate. = TRUE)
+    next
+  }
+
+  message("Converting to GIF...")
+  pdf_content <- image_read_pdf(out_pdf, density = 72) %>% image_resize(geometry = "400x")
+  out_gif <- image_write_gif(
+    image = pdf_content,
+    path = xfun::with_ext(out_pdf, "gif"),
+    delay = 1)
+  message("Retrieving built files.")
+  file.copy(out_pdf, out_dir)
+  file.copy(out_gif, out_dir)
+  # clean temp dir
+  unlink(dirname(out_pdf), recursive = TRUE)
+  # saving the new hash
+  saveRDS(new_hash_db, hash_db_file)
+}
+
+```
