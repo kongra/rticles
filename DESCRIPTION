@@ -1,8 +1,8 @@
 Package: rticles
 Type: Package
 Title: Article Formats for R Markdown
-Version: 0.2
-Date: 2016-04-24
+Version: 0.3
+Date: 2026-03-06
 Authors@R: c(
   person("JJ", "Allaire", role = c("aut", "cre"), email = "jj@rstudio.com"),
   person(family = "R Foundation", role = c("aut", "cph")),
@@ -21,12 +21,15 @@ Authors@R: c(
   person("Ben", "Marwick", role = c("aut", "cph"), email = "bmarwick@uw.edu"),
   person("Charlotte", "Wickham", role = c("aut", "cph"), email = "cwickham@gmail.com"),
   person("Oliver", "Keyes", role = c("aut", "cph"), email = "okeyes@wikimedia.org"),
-  person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com")
+  person("Miao", "Yu", role = c("aut", "cph"), email = "yufreecas@gmail.com"),
+  person("Konrad", "Grzanek", role = c("aut", "cph"), email = "kgrzanek@spoleczna.pl"),
+  person("Andrzej", "Cader", role = c("aut", "cph"), email = "acader@spoleczna.pl")
   )
 Description: A suite of custom R Markdown formats and templates for
   authoring journal articles and conference submissions.
+Encoding: UTF-8
 License: GPL-3
 Imports: utils, rmarkdown, knitr, yaml
 SystemRequirements: GNU make
-RoxygenNote: 6.0.1
+RoxygenNote: 7.3.2
 Suggests: testthat
