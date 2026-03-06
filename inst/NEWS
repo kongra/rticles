@@ -1,4 +1,15 @@
 
+rticles 0.3 (kongra/rticles fork)
+---------------------------------------------------------------------
+
+- Add LNCS (Springer Lecture Notes in Computer Science) template
+- Add JACSM (Journal of Applied Computer Science Methods) template
+- Replace pst-all with xcolor in LNCS and JACSM templates
+- Update DESCRIPTION: version, date, Encoding, RoxygenNote, authors
+- Add tests for lncs_article and jacsm_article
+- Document fork as intentionally frozen at rstudio/rticles v0.2 base
+
+
 rticles 0.2
 ---------------------------------------------------------------------
 
